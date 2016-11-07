@@ -11,6 +11,7 @@ public class AuthorService {
     @Autowired
     private AuthorRepository authorRepository;
 
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Author create(String authorName) {
         Author author = authorRepository.findByName(authorName);
         if (author == null) {
